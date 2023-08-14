@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head")%>
+
+    <body>
+        <nav>
+            <%- include("../partials/navbar")%>
+        </nav>
+
+        <main>
+            <h1>
+                All Employees
+            </h1>
+
+
+            <div>
+
+                <% if(employees.length> 0) {%>
+                    <% employees.forEach((res)=>{%>
+                        <div class="job-card">
+                            <div class="job-details">
+                                <div class="created-details">
+                                    <div>
+                                        <!-- <img src=<%=res.image %>
+                                            alt="profile" class="profile" /> -->
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <%=res.empName %>
+                                                <%=res.empSurname %>
+                                        </p>
+                                        <p>
+                                            <%=res.empIdNumber %><br />
+                                                <%=res.empPosition %><br />
+                                                    <%=res.empEmailAddress %><br />
+                                                        <%=res.empPhoneNumber %><br />
+
+                                        </p>
+                                        <button>Update</button>
+                                        <a onclick="deleteEmp(`<%=JSON.stringify(res)%>`)"><button>Delete</button></a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <%})%>
+                            <%} else{%>
+                                <h1>No Employees</h1>
+                                <%} %>
+
+            </div>
+        </main>
+
+        <script>
+            //Delete function
+            function deleteEmp(employee) {
+                const empDelete = JSON.parse(employee)
+                // console.log(empDelete);
+
+                const endPoint = `/delete/${empDelete.id}`;
+                fetch(endPoint, {
+                    method: "DELETE",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(empDelete)
+                }).then(() => {
+                    console.log("Deleted.");
+                }).catch((error) => {
+                    console.log(error);
+                })
+            }
+        </script>
+
+    </body>
+
+</html>

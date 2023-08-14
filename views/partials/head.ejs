@@ -1,0 +1,119 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Tracker App</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js';
+
+    // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js';
+
+    // Add Firebase products that you want to use
+    // import { getAuth } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js';
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js';
+    // import { getStorage } from "firebase/storage";
+
+    import firebase from "firebase/app";
+    import "firebase/compat/storage";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6Ghu0aRZRENoaaXWxzwBe_VtUg4d7xD4",
+      authDomain: "employee-app-d9ea2.firebaseapp.com",
+      projectId: "employee-app-d9ea2",
+      storageBucket: "employee-app-d9ea2.appspot.com",
+      messagingSenderId: "367695352105",
+      appId: "1:367695352105:web:1167305c1db2053a4a2738",
+      measurementId: "G-6L8KD1MXGZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+
+    // Initialize Cloud Storage and get a reference to the service
+    const storage = firebase.storage();
+
+
+    // // const app = initializeApp(firebaseConfig);
+    // // const storage = getStorage(app);
+    // // const storage = app.storage();
+
+    // firebase.initializeApp(firebaseConfig);
+
+    // // Use Firebase Storage
+    // const storage = firebase.storage();
+
+    function onSubmit() {
+      const empName = document.getElementById("empName").value;
+      const empSurname = document.getElementById("empSurname").value;
+      const empIdNumber = document.getElementById("empIdNumber").value;
+      const empEmailAddress = document.getElementById("empEmailAddress").value;
+      const empPhoneNumber = document.getElementById("empPhoneNumber").value;
+      const empPosition = document.getElementById("empPosition").value;
+
+      const file = document.getElementById("empImage");
+      const empImage = file.files[0];
+
+      const employee = {
+        empName: empName,
+        empSurname: empSurname,
+        empIdNumber: empIdNumber,
+        empEmailAddress: empEmailAddress,
+        empPhoneNumber: empPhoneNumber,
+        empPosition: empPosition,
+        empImage: file.files[0]
+      }
+      console.log(employee);
+      let imgUrl = "";
+      let imgName = "";
+      try {
+        const img = `${empImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+        const empImgPath = `employees/${img}`;
+
+        console.log(img);
+        // const storageRef = ref(storage, userImgPath);
+        // const uploadeUserImg = uploadBytes(storageRef, userImage);
+
+        // const storageRef = ref(storage, userImgPath);
+        // var storageRef = storage.ref().child(empImgPath);
+        uploadBytes(storageRef, empImage).then(() => {
+          // Get download URL
+          getDownloadURL(storageRef)
+            .then(async (url) => {
+              imgUrl = url;
+            })
+            .catch((error) => {
+              console.error(error);
+            })
+        });
+        imgName = img;
+
+        console.log(imgName, imgUrl);
+
+      } catch (error) {
+        console.log(error)
+      }
+
+
+
+
+
+
+
+      // const storageRef = firebase.storage().ref();
+      // console.log(employee.empImage);
+      // const endPoint = "/add_new_employee";
+      // fetch(endPoint, {
+      //     method: "POST",
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify(employee)
+      // }).then(response => response.json()).then((dat) => {
+      //     console.log("Done: ", dat);
+      // }).catch((error) => {
+      //     console.log(error);
+      // })
+    }
+  </script> -->
+
+  <!-- <script src="../js/handleEmployee.js"></script> -->
+</head>
