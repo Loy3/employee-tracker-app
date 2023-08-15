@@ -22,35 +22,35 @@
                 -->
 
             <form action="/add_new_employee" method="POST" enctype="multipart/form-data">
-            <input type="text" class="small" placeholder="Enter Employee's First Name" name="empName" />
-            <input type="text" class="small" placeholder="Enter Employee's Last Name" name="empSurname" />
-            <br />
-            <input type="number" class="long" placeholder="Enter Employee's ID Number" name="empIdNumber" />
-            <br />
-            <br />
-            <input type="email" class="small" placeholder="Enter Employee's Email Address" name="empEmailAddress" />
-            <input type="number" class="small" placeholder="Enter Employee's Phone Number" name="empPhoneNumber" />
-            <br />
+                <input type="text" class="small" placeholder="Enter Employee's First Name" name="empName" />
+                <input type="text" class="small" placeholder="Enter Employee's Last Name" name="empSurname" />
+                <br />
+                <input type="number" class="long" placeholder="Enter Employee's ID Number" name="empIdNumber" />
+                <br />
+                <br />
+                <input type="email" class="small" placeholder="Enter Employee's Email Address" name="empEmailAddress" />
+                <input type="number" class="small" placeholder="Enter Employee's Phone Number" name="empPhoneNumber" />
+                <br />
 
-            <select name="empPosition">
-                <option hidden="true">
-                    Select Position
-                </option>
-                <option value="Back-End Developer">Back-End Developer</option>
-                <option value="Business Analyst">Business Analyst</option>
-                <option value="Front-End Developer">Front-End Developer</option>
-                <option value="Full-Stack Developer">Full-Stack Developer</option>
-                <option value="Scrum Master">Scrum Master</option>
-                <option value="Team Leader">Team Leader</option>
-                <option value="Tester">Tester</option>
+                <select name="empPosition">
+                    <option hidden="true">
+                        Select Position
+                    </option>
+                    <option value="Back-End Developer">Back-End Developer</option>
+                    <option value="Business Analyst">Business Analyst</option>
+                    <option value="Front-End Developer">Front-End Developer</option>
+                    <option value="Full-Stack Developer">Full-Stack Developer</option>
+                    <option value="Scrum Master">Scrum Master</option>
+                    <option value="Team Leader">Team Leader</option>
+                    <option value="Tester">Tester</option>
 
-            </select>
-            <br />
-            <input type="file" class="long" placeholder="Enter Employee's Image" name="empImage" accept="image/*" />
-            <!-- <p name={"message"}><i>Add a image that is lower then 1mb</i></p> -->
-            <br />
-            <br /><button>POST</button>
-            <!-- <br /><button onclick="onSubmit()">POST</button> -->
+                </select>
+                <br />
+                <input type="file" class="long" placeholder="Enter Employee's Image" name="empImage" accept="image/*" />
+                <!-- <p name={"message"}><i>Add a image that is lower then 1mb</i></p> -->
+                <br />
+                <br /><button>POST</button>
+                <!-- <br /><button onclick="onSubmit()">POST</button> -->
             </form>
         </main>
     </body>

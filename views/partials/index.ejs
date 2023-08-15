@@ -37,7 +37,7 @@
                                                         <%=res.empPhoneNumber %><br />
 
                                         </p>
-                                        <button>Update</button>
+                                        <a onclick="openUpdate(`<%=JSON.stringify(res)%>`)"><button>Update</button></a>
                                         <a onclick="deleteEmp(`<%=JSON.stringify(res)%>`)"><button>Delete</button></a>
                                     </div>
                                 </div>
@@ -50,10 +50,49 @@
                                 <h1>No Employees</h1>
                                 <%} %>
 
+
+
+<br/><br/><br/>
+
+                                    <!-- Update -->
+                                    <div id="employee-update">
+                                        <div class="popup">
+                                            <div class="box">
+                                                <h1 id="title">Update Employee</h1>
+
+                                                <input type="text" class="small" id="empName" />
+                                                <input type="text" class="small" id="empSurname" />
+                                                <br />
+                                                <input type="number" class="long" id="empIdNumber" />
+                                                <br />
+                                                <br />
+                                                <input type="email" class="small" id="empEmailAddress" />
+                                                <input type="number" class="small" id="empPhoneNumber" />
+                                                <br />
+
+                                                <select id="empPosition">
+                                                    <option hidden="true" id="position">
+                                                        Select Position
+                                                    </option>
+                                                    <option value="Back-End Developer">Back-End Developer</option>
+                                                    <option value="Business Analyst">Business Analyst</option>
+                                                    <option value="Front-End Developer">Front-End Developer</option>
+                                                    <option value="Full-Stack Developer">Full-Stack Developer</option>
+                                                    <option value="Scrum Master">Scrum Master</option>
+                                                    <option value="Team Leader">Team Leader</option>
+                                                    <option value="Tester">Tester</option>
+
+                                                </select>
+                                                <br />
+                                                <br /><button onclick="updateDoc()">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
             </div>
         </main>
 
-        <script>
+        <!-- <script>
             //Delete function
             function deleteEmp(employee) {
                 const empDelete = JSON.parse(employee)
@@ -70,7 +109,7 @@
                     console.log(error);
                 })
             }
-        </script>
+        </script> -->
 
     </body>
 

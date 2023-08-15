@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const multer = require('multer');
 const fs = require('fs');
-
+const path = require("path");
 const app = express();
 const PORT = 8000;
 
@@ -13,7 +13,6 @@ app.set("view engine", "ejs");
 //connecting db with app
 const admin = require("firebase-admin");
 const credentials = require("./key.json");
-const { name } = require("ejs");
 
 //initialize admin
 admin.initializeApp({
@@ -33,9 +32,7 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname);
     }
 })
-
 const upload = multer({ storage: storage });
-
 app.post('/add_new_employee', upload.single('empImage'), async (req, res) => {
     console.log(req.file.filename);
     // res.render("partials/add_job");
@@ -97,6 +94,58 @@ app.get("/", async (req, res) => {
     }
 })
 
+//Delete 
+app.delete("/delete/:id", async (req, res) => {
+    try {
+        const deleteRef = await db.collection("employees").doc(req.params.id).delete();
+        res.send(deleteRef);
+        console.log("Employee Deleted");
+
+    } catch (error) {
+        res.send(error);
+        console.log(error);
+    }
+})
+
+app.delete('/delete-image/:empImage', (req, res) => {
+    const imgToDelete = req.params.empImage;
+    const imgPath = path.join(__dirname, 'uploads', imgToDelete);
+    fs.unlink(imgPath, (error) => {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Error deleting image');
+        } else {
+            res.send('Image deleted successfully');
+        }
+    });
+});
+
+//Update 
+app.put("/update/:id", async (req, res) => {
+
+    const id = req.params.id;
+    const updateData = {
+        empName: req.body.empName,
+        empSurname: req.body.empSurname,
+        empIdNumber: req.body.empIdNumber,
+        empEmailAddress: req.body.empEmailAddress,
+        empPhoneNumber: req.body.empPhoneNumber,
+        empPosition: req.body.empPosition,
+        empImage: req.body.empImage
+
+    }
+
+    await db.collection("employees").doc(id).update(updateData).then(() => {
+        // console.log("Updated");
+        // res.send("Updated Successfully.")
+    }).catch((error) => {
+        console.log(error);
+        res.send(error)
+    })
+
+
+})
+
 
 app.use(function (req, res, next) {
     // res.status(404).sendFile(__dirname + '/views/404.html');
@@ -131,19 +180,6 @@ app.use(function (req, res, next) {
 //         console.log(error);
 //     }
 // })
-
-app.delete("/delete/:id", async (req, res) => {
-    try {
-        // const deleteRef = await db.collection("employees").doc(req.params.id).delete();
-        // res.send(deleteRef);
-        console.log("Employee Deleted");
-        
-    } catch (error) {
-        res.send(error);
-        console.log(error);
-    }
-})
-
 
 
 app.listen(PORT, (error) => {
