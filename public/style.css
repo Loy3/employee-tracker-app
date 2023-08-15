@@ -1,0 +1,887 @@
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+/*Imports*/
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  margin: 0 -5px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  text-align: left;
+  padding: 0;
+  float: left;
+}
+
+
+p {
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+
+input,
+select {
+  padding: 10px;
+  margin: 15px 0px;
+  outline: none;
+  border: 1px solid black;
+}
+
+input::placeholder {
+  color: black;
+}
+
+input:hover,
+select:hover {
+  background-color: #f1ece7;
+}
+
+button {
+  width: 478px;
+  padding: 10px;
+  background-color: #c18e5c;
+  color: white;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+button:hover {
+  text-align: right;
+  background-color: #f5d0aa;
+  border: 2px solid #c18e5c;
+  color: #c18e5c;
+}
+
+.small {
+  width: 210px;
+  margin-right: 10px;
+}
+
+.long {
+  width: 455px;
+}
+
+.signin input {
+  padding: 20px 10px;
+
+}
+
+/*Nav*/
+nav {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.nav-wrap {
+  padding: 30px 50px;
+
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: transparent;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.nav-wrap img {
+  width: 60px;
+}
+
+
+.topnav a {
+  cursor: pointer;
+  color: black;
+  text-align: right;
+  padding: 0 40px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.topnav a:hover {
+  color: grey;
+}
+
+.topnav .column {
+  float: left;
+  width: 47%;
+  padding: 0 10px;
+  padding-bottom: 20px;
+}
+
+
+#logo {
+  left: 0;
+  font-size: 40px;
+  color: white;
+  font-family: 'Londrina Outline', cursive;
+  padding-right: 30px;
+
+}
+
+.topnav-right {
+  text-align: right;
+}
+
+.topnav-center {
+  text-align: center;
+}
+
+.topnav button {
+  margin-right: 30px;
+  height: 40px;
+  width: 110px;
+}
+
+.topnav button:hover {
+  opacity: 0.7;
+  border: 2px solid white;
+}
+
+/*Add new employee*/
+.add-Employee {
+  padding: 0;
+
+}
+
+
+.add-Employee .columns:first-child {
+  width: 70%;
+  color: black;
+  padding: 0;
+  float: left;
+  padding-bottom: 50px;
+}
+
+.add-Employee .columns:not(:first-child) {
+  width: 30%;
+  padding: 0;
+  float: left;
+}
+
+.add-Employee .container {
+  margin-top: 20px;
+}
+
+.add-Employee p {
+  padding: 0;
+  margin: 0;
+  color: grey;
+}
+
+.add-Employee .container {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10px;
+
+}
+
+#bg {
+  background-image: url("./Assets/Images/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+}
+
+
+/*end of add new employee*/
+
+/*Display Employees*/
+.display {
+  margin: 50px;
+  padding: 0;
+
+  position: relative;
+}
+
+.search {
+  position: absolute;
+  top: 0;
+  right: 50px;
+}
+
+.search button {
+  margin-left: 10px;
+  width: 130px;
+}
+
+.search input {
+  width: 200px !important;
+}
+
+.content {
+  margin: 50px 30px;
+}
+
+#content {
+  display: block;
+}
+
+.content h1 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  position: relative;
+}
+
+.content span {
+  font-size: 16px;
+  border: 1px solid black;
+  padding: 0 20px;
+  margin-top: 10px !important;
+  margin-left: 10px;
+  position: absolute;
+}
+
+.content #myCards {
+  margin: 80px 30px;
+}
+
+.content .column {
+  float: left;
+  width: 31%;
+  padding: 20px 10px;
+}
+
+.content td {
+  padding: 5px 0px;
+}
+
+.content .card {
+  height: 350px;
+  width: 95%;
+  background-color: #f1ece7;
+  /* padding: 20px 0px 10px 20px; */
+  border: 1px solid #c18e5c;
+  box-shadow: 10px 10px 2px 1px #c18e5c;
+  position: relative;
+
+}
+
+#step1 {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+}
+
+#step1 #profile {
+  position: absolute;
+  width: 25%;
+  left: 20px;
+  top: 0;
+}
+
+#step1 .employee {
+  position: absolute;
+  width: 40%;
+  left: 35%;
+  top: 20px;
+}
+
+#step1 .buttons {
+  position: absolute;
+  width: 20%;
+  right: 25px;
+  top: 20px;
+}
+
+#step2 {
+  position: relative;
+  top: 140px;
+  left: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+#step2 .column {
+  width: 43%;
+  padding: 10px 0;
+}
+
+
+.card .row {
+  margin: 0;
+}
+
+#profile img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card button {
+  width: auto;
+  padding: 5px;
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.card button:hover {
+  text-align: right;
+  background-color: #f5d0aa;
+  border: 2px solid #c18e5c;
+  color: #c18e5c;
+}
+
+
+
+.card h4 {
+  font-size: 15px;
+}
+
+.card span {
+  color: #c18e5c;
+  border: none;
+
+  font-size: 15px;
+  padding: 0;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+  position: relative;
+}
+
+.content h3 {
+  text-align: left;
+}
+
+
+#update {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+#update .popup {
+  width: 92%;
+  height: 90vh;
+  position: relative;
+  top: 5vh;
+  left: 4%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup #box {
+  width: 92%;
+  position: relative;
+  left: 4%;
+}
+
+#update .wrapper {
+  width: 80%;
+}
+
+.popup #box img {
+  width: 90%;
+  height: 60vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.popup #box h3,
+.popup #box h1 {
+  color: #c18e5c;
+  margin-top: 20px;
+  text-align: left;
+  font-family: 'Hind Siliguri', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.popup #box p {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+#update .closeBtn {
+  cursor: pointer;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #c18e5c;
+  position: absolute;
+  top: 5vh;
+  right: 6%;
+  z-index: 10;
+}
+
+#update .closeBtn:hover {
+  color: red;
+}
+
+#update-form {
+  display: none;
+}
+
+.up-btn {
+  margin: 30px 0;
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+}
+
+.up-btn button {
+  width: 45%;
+  margin-right: 10px;
+}
+
+
+#update table {
+  text-align: left;
+  border-spacing: 15px;
+  width: 100%;
+
+  margin: 30px 0;
+}
+
+#update input::placeholder {
+  color: gray;
+}
+
+#update span {
+  color: #c18e5c;
+  border: none;
+
+  font-size: 20px;
+  padding: 0;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+  position: relative;
+}
+
+#update .column {
+  float: left;
+  width: 45% !important;
+}
+
+#side-view img {
+  width: 250px;
+  height: 230px;
+  object-fit: cover;
+}
+
+#side-view button {
+  margin-left: 15px;
+  width: 250px;
+}
+
+#all {
+  display: block;
+}
+
+#searched {
+  display: none;
+}
+
+#searched button {
+  width: 100px;
+  margin-left: 20px;
+}
+
+/*End of display employees*/
+
+/*Media*/
+/* @media screen and (max-width: 3000px) and (min-width: 1920px) {
+
+  .content .column {
+    width: 24%;
+  }
+
+} */
+
+@media screen and (max-width: 700px) {
+
+  /*Topnav*/
+  nav {
+    padding: 0;
+    margin: 0;
+  }
+
+
+  .nav-wrap {
+    padding: 20px 0px;
+
+  }
+
+  .topnav {
+    padding: 0 30px;
+    height: auto;
+  }
+
+  .nav-wrap img {
+    width: 50px;
+  }
+
+
+  .topnav a {
+    text-align: left;
+    padding: 0;
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  .topnav .column:first-child {
+    width: 25%;
+  }
+
+  .topnav .column:not(:first-child) {
+    width: 60%;
+  }
+
+
+  .topnav-right {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  #logo {
+    padding-right: 0;
+    margin: 0;
+  }
+
+  /*Topnav*/
+
+  /*Display*/
+  .add-Employee .columns:first-child {
+    width: 98%;
+  }
+
+  .add-Employee nav .topnav-right {
+    text-align: right;
+  }
+
+  .add-Employee .columns:not(:first-child) {
+    width: 0%;
+    display: none;
+  }
+
+  .add-Employee .container {
+    margin: 0;
+    padding: 40px;
+  }
+
+  .add-Employee button {
+    margin-left: 10px;
+  }
+
+
+  /*Display employees*/
+
+  /*Display Employees*/
+  .display {
+    margin: 20px;
+    padding: 0;
+
+    position: relative;
+  }
+
+  .content {
+    margin: 50px 20px;
+  }
+
+
+  .content .employee {
+    font-size: 25px;
+  }
+
+  .content span {
+    font-size: 15px;
+    border: 1px solid black;
+    padding: 0 15px;
+    margin-top: 13px !important;
+    margin-left: 10px;
+  }
+
+  .content #myCards {
+    margin: 50px 0px;
+  }
+
+  .content .column {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+
+
+  .card span {
+    color: #c18e5c;
+    border: none;
+
+    font-size: 15px;
+    padding: 0;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    position: relative;
+  }
+
+  .content h3 {
+    text-align: left;
+  }
+
+
+  #update {
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: unset;
+  }
+
+  #update .popup {
+    width: 92%;
+    height: auto;
+    position: relative;
+    top: 5vh;
+    left: 4%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 60px;
+  }
+
+  #update .wrapper {
+    width: 98%;
+  }
+
+  .popup #box {
+    width: 98%;
+    position: relative;
+    left: 4%;
+    top: 0;
+  }
+
+  .popup #box img {
+    /* margin-top: 30px; */
+    width: 100%;
+    height: 40vh;
+  }
+
+  .popup #box h3,
+  .popup #box h1 {
+    color: #c18e5c;
+    margin-top: 10px;
+  }
+
+  #update .closeBtn {
+    cursor: pointer;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #c18e5c;
+    position: absolute;
+
+    top: 2vh;
+  }
+
+  .up-btn {
+    margin: 30px 0;
+    margin-left: 5px;
+    bottom: -10px;
+
+    width: 97%;
+    z-index: 99;
+  }
+
+  .up-btn button {
+    width: 48%;
+    margin-right: 1px;
+  }
+
+
+  #update table {
+    text-align: left;
+    border-spacing: 15px;
+    width: 100%;
+
+    margin: 30px 0;
+  }
+
+  #update input::placeholder {
+    color: gray;
+  }
+
+  #update span {
+    color: #c18e5c;
+    border: none;
+
+    font-size: 20px;
+    padding: 0;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+    position: relative;
+  }
+
+  #update .column {
+    padding: 20px 0;
+    float: left;
+    width: 95% !important;
+  }
+
+
+  #update-form {
+    width: 100%;
+
+  }
+
+  #update-form input {
+    width: 95%;
+  }
+
+
+  #side-view img {
+    width: 250px;
+    height: 230px;
+    object-fit: cover;
+  }
+
+  #side-view button {
+    margin-left: 15px;
+    width: 250px;
+  }
+
+  #all {
+    display: block;
+  }
+
+  #searched {
+    display: none;
+  }
+
+  #searched button {
+    width: 100px;
+    margin-left: 20px;
+  }
+
+  /*End of display employees*/
+
+  /*
+  .content .column,
+  .content .card,
+  #update .column {
+    width: 95% !important;
+  }
+
+  .content #myCards {
+    margin: 20px 0;
+  }
+
+
+  #step2 .column,
+  #step1 .column:first-child,
+  #step1 .column:not(:first-child) {
+    width: 40% !important;
+
+  }
+
+  .content .card {
+    height: auto;
+  }
+
+  .card h4 {
+    font-size: 14px;
+  }
+
+  .card span {
+    font-size: 14px;
+  }
+
+  #update input {
+    width: 100% !important;
+  }
+
+  .upEmp {
+    margin-top: 80px;
+  }
+
+  #side-view td,
+  #update span {
+    font-size: 14px !important;
+  }
+
+  #side-view img {
+    width: 150px;
+    height: 150px;
+  } */
+
+  /*Display*/
+
+  input,
+  select {
+    padding: 10px;
+    margin: 15px 0px;
+    outline: none;
+    border: 1px solid black;
+  }
+
+  button {
+    width: 100%;
+  }
+
+
+  .small {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .long {
+    width: 100%;
+  }
+}
+
+/*End of media*/

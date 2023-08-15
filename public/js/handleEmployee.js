@@ -23,26 +23,61 @@ function deleteEmp(employee) {
     })
 }
 
-
-
 //Update Functions
 var empToUpdate = [];
 function openUpdate(employee) {
     empToUpdate = JSON.parse(employee);
-    // document.getElementById("popup").style.display = "block";
+    document.getElementById("update").style.display = "block";
     console.log(empToUpdate);
 
-    document.getElementById("title").innerHTML = `Update for: ${empToUpdate.empName} ${empToUpdate.empSurname}`;
-    document.getElementById("empName").placeholder = `Name: ${empToUpdate.empName}`;
-    document.getElementById("empSurname").placeholder = `Surname: ${empToUpdate.empSurname}`;
-    document.getElementById("empIdNumber").placeholder = `ID Number: ${empToUpdate.empIdNumber}`;
-    document.getElementById("empEmailAddress").placeholder = `Email: ${empToUpdate.empEmailAddress}`;
-    document.getElementById("empPhoneNumber").placeholder = `Phone Number: ${empToUpdate.empPhoneNumber}`;
-    document.getElementById("position").innerHTML = `Current Position: ${empToUpdate.empPosition}`;
+    document.getElementById("fName").innerHTML = `${empToUpdate.empName} ${empToUpdate.empSurname}`;
+    document.getElementById("idNum").innerHTML = empToUpdate.empIdNumber;
+    document.getElementById("emailA").innerHTML = empToUpdate.empEmailAddress;
+    document.getElementById("phNum").innerHTML = empToUpdate.empPhoneNumber;
+    document.getElementById("pstn").innerHTML = empToUpdate.empPosition;
+
+    let img = document.getElementById("empImg");
+    img.src = empToUpdate.empImage;
+
 }
 
 function close_form() {
-    document.getElementById("popup").style.display = "none";
+    document.getElementById("update").style.display = "none";
+    let updateF = document.getElementById("update-form");
+    let viewEmp = document.getElementById("view");
+    let img = document.getElementById("empImg");
+    viewEmp.style.display = "block";
+    updateF.style.display = "none";
+    img.style.height = "40vh";
+}
+
+function viewOrUpdate(value) {
+    let updateF = document.getElementById("update-form");
+    let viewEmp = document.getElementById("view");
+    let img = document.getElementById("empImg");
+    switch (value) {
+        case 1:
+            viewEmp.style.display = "block";
+            updateF.style.display = "none";
+            img.style.height = "40vh";
+            break;
+
+        case 2:
+            viewEmp.style.display = "none";
+            updateF.style.display = "block";
+            img.style.height = "20vh";
+
+
+            document.getElementById("title").innerHTML = `Update for: ${empToUpdate.empName} ${empToUpdate.empSurname}`;
+            document.getElementById("empName").placeholder = `Name: ${empToUpdate.empName}`;
+            document.getElementById("empSurname").placeholder = `Surname: ${empToUpdate.empSurname}`;
+            document.getElementById("empIdNumber").placeholder = `ID Number: ${empToUpdate.empIdNumber}`;
+            document.getElementById("empEmailAddress").placeholder = `Email: ${empToUpdate.empEmailAddress}`;
+            document.getElementById("empPhoneNumber").placeholder = `Phone Number: ${empToUpdate.empPhoneNumber}`;
+            document.getElementById("position").innerHTML = `Current Position: ${empToUpdate.empPosition}`;
+            break;
+    }
+
 }
 
 function updateDoc() {
@@ -53,7 +88,7 @@ function updateDoc() {
     let idNum = document.getElementById("empIdNumber").value
     let email = document.getElementById("empEmailAddress").value
     let phNum = document.getElementById("empPhoneNumber").value
-    let position = document.getElementById("position").value
+    let position = document.getElementById("empPosition").value
 
     if (name === "") {
         name = empToUpdate.empName;

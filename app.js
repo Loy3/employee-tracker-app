@@ -22,6 +22,7 @@ const db = admin.firestore();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.static('uploads'));
 
 // Add new employee
 const storage = multer.diskStorage({
