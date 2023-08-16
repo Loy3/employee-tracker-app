@@ -6,6 +6,14 @@ const path = require("path");
 const app = express();
 const PORT = 8000;
 
+const {
+    ref,
+    uploadBytes,
+    listAll,
+    deleteObject,
+} = require("firebase/storage");
+const fbStorage = require("./firebase-config.js");
+
 //setting view engine to ejs
 app.set("view engine", "ejs");
 
@@ -47,6 +55,15 @@ app.post('/add_new_employee', upload.single('empImage'), async (req, res) => {
             empPhoneNumber: req.body.empPhoneNumber,
             empImage: req.file.filename
         }
+
+        // const file = req.file;
+        // const imageRef = ref(fbStorage, file.originalname);
+        // const metatype = { contentType: file.mimetype, name: file.originalname };
+        // await uploadBytes(imageRef, file.buffer, metatype)
+        //     .then((snapshot) => {
+        //         res.send("uploaded!");
+        //     })
+        //     .catch((error) => console.log(error.message));
 
         const response = await db.collection("employees").add(empData).then(() => {
             res.redirect("/");
@@ -163,6 +180,7 @@ app.put("/updateImage/:id", upload2.single('empImage'), async (req, res) => {
 
     await db.collection("employees").doc(id).update(updateData).then(() => {
         res.redirect("/");
+        // window.location.reload();
     }).catch((error) => {
         console.log(error);
         res.send(error)

@@ -121,7 +121,7 @@ function updateDoc() {
     if (phNum === "") {
         phNum = empToUpdate.empPhoneNumber;
     }
-    if (position === "") {
+    if (position === "Select Position") {
         position = empToUpdate.empPosition;
     }
 
@@ -182,7 +182,7 @@ function updateImage(){
         method: "DELETE",
     }).then(() => {
         console.log("Image Deleted.");
-        window.location.reload();
+        // window.location.reload();
     }).catch((error) => {
         console.log(error);
     })
