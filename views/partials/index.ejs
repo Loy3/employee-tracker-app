@@ -12,11 +12,11 @@
                             <%=employees.length %> employees
                         </span></h1>
 
-                    <!-- <div class="search">
+                    <div class="search">
                         <input type="text" placeholder="Enter email address to search" id="search">
-                        <button onclick="search()">Search</button>
+                        <button onclick="search(`<%=JSON.stringify(employees)%>`)">Search</button>
                         <br />
-                    </div> -->
+                    </div>
 
                     <div class="row" id="myCards">
 
@@ -96,30 +96,6 @@
                                                 </div>
                                             </div>
 
-                                            <!--<div class="job-details">
-                                                <div class="created-details">
-                                                    <div>
-                                                        <img src=<%=res.image %>
-                                            alt="profile" class="profile" /> 
-                                                    </div>
-                                                    <div>
-                                                        <p>
-                                                            <%=res.empName %>
-                                                                <%=res.empSurname %>
-                                                        </p>
-                                                        <p>
-                                                            <%=res.empIdNumber %><br />
-                                                                <%=res.empPosition %><br />
-                                                                    <%=res.empEmailAddress %><br />
-                                                                        <%=res.empPhoneNumber %><br />
-
-                                                        </p>
-                                                        <a
-                                                            onclick="openUpdate(`<%=JSON.stringify(res)%>`)"><button>Update</button></a>
-                                                        <a
-                                                            onclick="deleteEmp(`<%=JSON.stringify(res)%>`)"><button>Delete</button></a>
-                                                    </div>
-                                                </div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -138,29 +114,12 @@
 
             </main>
 
-            <!-- <script>
-            //Delete function
-            function deleteEmp(employee) {
-                const empDelete = JSON.parse(employee)
-                // console.log(empDelete);
-
-                const endPoint = `/delete/${empDelete.id}`;
-                fetch(endPoint, {
-                    method: "DELETE",
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(empDelete)
-                }).then(() => {
-                    console.log("Deleted.");
-                }).catch((error) => {
-                    console.log(error);
-                })
-            }
-        </script> -->
             <!-- Update -->
             <div id="update">
-                <a class="closeBtn" onclick="close_form()"><span class="close-popup">x</span></a>
+                <a class="closeBtn" onclick="close_form()"><span class="close-popup"><img src="/Assets/Icons/cross.png"
+                            alt="" width="30"></span></a>
                 <div class="popup">
-                    
+
                     <div class="wrapper">
                         <div class="row" id="box">
 
@@ -169,13 +128,11 @@
                             </div>
 
                             <div class="column">
-                                <div >
+                                <div>
                                     <h1 id="fName">Name and surname</h1>
                                     <p>A full view of employee's details.</p>
                                     <br />
                                     <div id="view">
-
-
                                         <h3>ID Number:</h3>
                                         <h4 id="idNum">0000000000000</h4>
 
@@ -190,34 +147,48 @@
                                     </div>
 
                                     <div id="update-form">
-                                        <h3 id="title">Update Employee</h3>
+                                        <button class="small" onclick="changeEntries(1)">Update Details</button>
 
-                                        <input type="text" class="small" id="empName" />
-                                        <input type="text" class="small" id="empSurname" />
-                                        <br />
-                                        <input type="number" class="long" id="empIdNumber" />
-                                        <br />
-                                        <br />
-                                        <input type="email" class="small" id="empEmailAddress" />
-                                        <input type="number" class="small" id="empPhoneNumber" />
-                                        <br />
+                                        <button class="small" onclick="changeEntries(2)">Update Image</button>
+                                        <br /><br />
 
-                                        <select id="empPosition">
-                                            <option hidden="true" id="position">
-                                                Select Position
-                                            </option>
-                                            <option value="Back-End Developer">Back-End Developer</option>
-                                            <option value="Business Analyst">Business Analyst</option>
-                                            <option value="Front-End Developer">Front-End Developer</option>
-                                            <option value="Full-Stack Developer">Full-Stack Developer
-                                            </option>
-                                            <option value="Scrum Master">Scrum Master</option>
-                                            <option value="Team Leader">Team Leader</option>
-                                            <option value="Tester">Tester</option>
+                                        <div id="upDetails">
+                                            <h3 id="title">Update Employee</h3>
 
-                                        </select>
-                                        <br />
-                                        <br /><button onclick="updateDoc()">Update</button>
+                                            <input type="text" class="small" id="empName" />
+                                            <input type="text" class="small" id="empSurname" />
+                                            <br />
+                                            <input type="number" class="long" id="empIdNumber" />
+                                            <br />
+                                            <input type="email" class="small" id="empEmailAddress" />
+                                            <input type="number" class="small" id="empPhoneNumber" />
+                                            <br />
+
+                                            <select id="empPosition">
+                                                <option hidden="true">
+                                                    Select Position
+                                                </option>
+                                                <option value="Back-End Developer">Back-End Developer</option>
+                                                <option value="Business Analyst">Business Analyst</option>
+                                                <option value="Front-End Developer">Front-End Developer</option>
+                                                <option value="Full-Stack Developer">Full-Stack Developer
+                                                </option>
+                                                <option value="Scrum Master">Scrum Master</option>
+                                                <option value="Team Leader">Team Leader</option>
+                                                <option value="Tester">Tester</option>
+
+                                            </select>
+                                            <br /><button onclick="updateDoc()">Update</button>
+                                        </div>
+
+                                        <div id="upImg">
+                                            <br />
+                                            <input type="file" class="long" placeholder="Enter Employee's Image"
+                                                id="empImage" accept="image/*" required />
+                                            <br />
+                                            <button onclick="updateImage()">Update Image</button>
+                                        </div>
+
                                     </div>
 
 
@@ -225,7 +196,7 @@
                             </div>
 
                         </div>
-                       
+
                     </div>
                     <div class="up-btn">
                         <button onclick="viewOrUpdate(1)">

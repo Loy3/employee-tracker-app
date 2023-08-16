@@ -1,0 +1,33 @@
+
+const storage2 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+})
+const upload2 = multer({ storage: storage2 });
+app.put("/update/:id", upload2.single('empImage'), async (req, res) => {
+
+    const id = req.params.id;
+    // console.log(req.body.empImage);
+    const updateData = {
+        empName: req.body.empName,
+        empSurname: req.body.empSurname,
+        empIdNumber: req.body.empIdNumber,
+        empEmailAddress: req.body.empEmailAddress,
+        empPhoneNumber: req.body.empPhoneNumber,
+        empPosition: req.body.empPosition,
+        empImage: req.file.filename
+    }
+
+    await db.collection("employees").doc(id).update(updateData).then(() => {
+        res.redirect("/");
+    }).catch((error) => {
+        console.log(error);
+        res.send(error)
+    })
+
+
+})

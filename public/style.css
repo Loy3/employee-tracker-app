@@ -126,15 +126,42 @@ nav {
   width: 60px;
 }
 
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+  /* add any other styles you want */
+}
+
+nav ul img {
+  width: 30px !important;
+}
+
+nav ul table:first-child {
+  margin-right: 20px;
+}
+
+nav ul table td:first-child {
+  width: 20%;
+}
+
+
+nav .text {
+  margin-top: -10px;
+  margin-left: 5px;
+}
 
 .topnav a {
   cursor: pointer;
   color: black;
-  text-align: right;
-  padding: 0 40px;
+  text-align: left;
+  /* padding: 0 40px; */
   text-decoration: none;
   font-size: 18px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .topnav a:hover {
@@ -397,7 +424,7 @@ nav {
 
 #update {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
@@ -459,7 +486,7 @@ nav {
   color: #c18e5c;
   position: absolute;
   top: 5vh;
-  right: 6%;
+  right: 5%;
   z-index: 10;
 }
 
@@ -536,6 +563,15 @@ nav {
   margin-left: 20px;
 }
 
+#upDetails {
+  display: block;
+}
+
+#upImg {
+  display: none;
+}
+
+
 /*End of display employees*/
 
 /*Media*/
@@ -562,28 +598,51 @@ nav {
   }
 
   .topnav {
-    padding: 0 30px;
+    padding: 0;
     height: auto;
   }
 
   .nav-wrap img {
     width: 50px;
+    margin-left: 20px;
+  }
+
+  nav ul img {
+    width: 20px !important;
+  }
+
+  nav ul table:first-child {
+    margin-right: 10px;
+  }
+
+  nav ul table td:first-child {
+    width: 20%;
+  }
+
+
+  nav .text {
+    margin-top: -10px;
+    margin-left: 2px;
   }
 
 
   .topnav a {
     text-align: left;
     padding: 0;
-    margin-right: 10px;
+    margin-right: 5px;
     font-size: 14px;
   }
 
   .topnav .column:first-child {
-    width: 25%;
+    width: 20%;
+    margin: 0;
+    padding: 0;
   }
 
   .topnav .column:not(:first-child) {
-    width: 60%;
+    width: 80%;
+    margin: 0;
+    padding: 0;
   }
 
 
@@ -723,9 +782,8 @@ nav {
     cursor: pointer;
     font-size: 40px;
     font-weight: bolder;
-    color: #c18e5c;
     position: absolute;
-
+    right: 4%;
     top: 2vh;
   }
 
@@ -795,17 +853,23 @@ nav {
     width: 250px;
   }
 
-  #all {
-    display: block;
+  .search {
+    position: absolute;
+    top: 40px;
+    right: 20px;
   }
 
-  #searched {
-    display: none;
+  .search button {
+    margin-left: 5px;
+    width: 110px;
   }
 
-  #searched button {
-    width: 100px;
-    margin-left: 20px;
+  .search input {
+    width: 190px !important;
+  }
+
+  .emloyees {
+    margin-top: -40px;
   }
 
   /*End of display employees*/

@@ -14,6 +14,7 @@ app.set("view engine", "ejs");
 const admin = require("firebase-admin");
 const credentials = require("./key.json");
 
+
 //initialize admin
 admin.initializeApp({
     credential: admin.credential.cert(credentials)
@@ -36,8 +37,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post('/add_new_employee', upload.single('empImage'), async (req, res) => {
     console.log(req.file.filename);
-    // res.render("partials/add_job");
-    // const ename = req.body["empName"];
     try {
         const empData = {
             empIdNumber: req.body.empIdNumber,
@@ -48,8 +47,6 @@ app.post('/add_new_employee', upload.single('empImage'), async (req, res) => {
             empPhoneNumber: req.body.empPhoneNumber,
             empImage: req.file.filename
         }
-        // console.log(empData);
-
 
         const response = await db.collection("employees").add(empData).then(() => {
             res.redirect("/");
@@ -69,8 +66,6 @@ app.get("/add", async (req, res) => {
 
 //Get
 app.get("/", async (req, res) => {
-    //     res.render('partials/index');
-    //    res.status(200).send();
     try {
         const empRef = db.collection("employees");
         const response = await empRef.get();
@@ -87,8 +82,6 @@ app.get("/", async (req, res) => {
         res.render('partials/index', {
             employees: employees
         })
-        // res.status(200).send(dataRes);
-
     } catch (error) {
         res.send(error);
         console.log(error);
@@ -122,7 +115,7 @@ app.delete('/delete-image/:empImage', (req, res) => {
 });
 
 //Update 
-app.put("/update/:id", async (req, res) => {
+app.put("/update/:id", upload.single('empImage'), async (req, res) => {
 
     const id = req.params.id;
     const updateData = {
@@ -137,8 +130,6 @@ app.put("/update/:id", async (req, res) => {
     }
 
     await db.collection("employees").doc(id).update(updateData).then(() => {
-        // console.log("Updated");
-        // res.send("Updated Successfully.")
     }).catch((error) => {
         console.log(error);
         res.send(error)
@@ -147,41 +138,42 @@ app.put("/update/:id", async (req, res) => {
 
 })
 
+const storage2 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
+})
+const upload2 = multer({ storage: storage2 });
+app.put("/updateImage/:id", upload2.single('empImage'), async (req, res) => {
+
+    const id = req.params.id;
+    // console.log(req.body.empImage);
+    const updateData = {
+        empName: req.body.empName,
+        empSurname: req.body.empSurname,
+        empIdNumber: req.body.empIdNumber,
+        empEmailAddress: req.body.empEmailAddress,
+        empPhoneNumber: req.body.empPhoneNumber,
+        empPosition: req.body.empPosition,
+        empImage: req.file.filename
+    }
+
+    await db.collection("employees").doc(id).update(updateData).then(() => {
+        res.redirect("/");
+    }).catch((error) => {
+        console.log(error);
+        res.send(error)
+    })
+
+
+})
 
 app.use(function (req, res, next) {
-    // res.status(404).sendFile(__dirname + '/views/404.html');
     res.render("partials/404");
 });
-
-// //Delete employee
-// app.delete("/delete/:id", async (req, res) => {
-//     try {
-//         // const imageName = req.params.empImage;
-//         // console.log(req.params.id);
-//         // res.send("deleteRef");
-//         // const imagePath = `./uploads/${imageName}`; // replace with your image path
-//         // const imagePath = `./uploads/pexels-emris-joseph-9136298.jpg`; // replace with your image path
-
-//         // fs.unlink(imagePath, (err) => {
-//         //     if (err) {
-//         //         console.error(err);
-//         //         return;
-//         //     }
-
-//         //     console.log(`${imageName} has been deleted`);
-//         // });
-
-
-//         const deleteRef = await db.collection("employees").doc(req.params.id).delete();
-//         res.send(deleteRef);
-//         console.log("Employee Deleted");
-//         res.redirect("/");
-//     } catch (error) {
-//         res.send(error);
-//         console.log(error);
-//     }
-// })
-
 
 app.listen(PORT, (error) => {
     if (!error) {
