@@ -856,16 +856,17 @@ nav .text {
   .search {
     position: absolute;
     top: 40px;
-    right: 20px;
+    left: 20px;
+    right: unset;
   }
 
   .search button {
     margin-left: 5px;
-    width: 110px;
+    width: 100px;
   }
 
   .search input {
-    width: 190px !important;
+    width: 180px !important;
   }
 
   .emloyees {
